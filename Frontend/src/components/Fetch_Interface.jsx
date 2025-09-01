@@ -20,7 +20,7 @@ function Fetch_Interface() {
       const res = await fetch("http://localhost:5000/sku/id", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sku }),
+        body: JSON.stringify({ sku, org }),
       });
 
       if (!res.ok) throw new Error("Failed to fetch");
@@ -82,7 +82,7 @@ function Fetch_Interface() {
             </button> */}
           </div>
           <label
-            htmlFor="sku"
+            htmlFor="org"
             className="mb-2 block font-bold text-gray-700 text-base"
           >
             ORG
