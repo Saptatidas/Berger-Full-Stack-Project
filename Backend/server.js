@@ -232,7 +232,7 @@ app.post("/sku/id", async (req, res) => {
 app.post("/sku/update", async (req, res) => {
     try {
         
-        const { sku, org, subinventory, stock} = req.body;
+        const { sku, subinventory, stock} = req.body;
         
         if(!sku){
             return res.status(400).json({ error: "SKU required" });
