@@ -1,0 +1,109 @@
+:root {
+  --font-stack: "Segoe UI", system-ui,-apple-system,sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-stack);
+  background-color: #e5e5e5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.update-box {
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  padding: 30px;
+  width: 500px;
+  max-width: 650px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+
+.customer-form {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.customer-form label {
+  font-weight: bold;
+  font-family: var(--font-stack);
+  font-size: 1rem;
+}
+
+.customer-form input {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #b8f2b0;
+  border: none;
+  border-radius: 10px;
+}
+
+.result-table {
+  overflow-x: auto;
+  margin-bottom: 25px;
+}
+
+.result-table table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: 1rem;
+}
+
+.result-table th,
+.result-table td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: left;
+  font-family: var(--font-stack);
+}
+
+.result-table th {
+  background-color: #d2b4f2;
+}
+
+.update-button {
+  text-align: right;
+}
+
+.update-button button {
+  background-color: #a6d3f9;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.update-button button:hover {
+  background-color: #8fc6f2;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .customer-form {
+    flex-direction: column;
+  }
+
+  .update-button {
+    text-align: center;
+  }
+
+  .update-box {
+    padding: 20px;
+  }
+
+  .result-table th,
+  .result-table td {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,130 @@
+:root {
+  --bg: #efebef;
+  --card-bg: #ffffff;
+  --input-bg: #c8f5be;
+  --button-bg:#cba8cb;
+  --radius: 12px;
+  --shadow: 0 12px 28px -10px rgba(0,0,0,0.15);
+  --font-stack: "Segoe UI", system-ui,-apple-system,sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-stack); 
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  color: #222;
+}
+
+.login-card {
+  position: relative;
+  background: var(--card-bg);
+  width: 400px;
+  max-width: 600px;
+  padding: 6.25rem 1.75rem 2rem;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.title-badge {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  color: #000000;
+  padding: 0.55rem 1.25rem;
+  border-radius: 10px;
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  margin-left: 2px;
+}
+
+input[type="email"],
+input[type="password"] {
+  padding: 14px 16px;
+  border: 2px solid #333;
+  border-radius: 12px;
+  background: var(--input-bg);
+  font-size: 1rem;
+  outline: none;
+  width: 100%;
+  font-weight: 500;
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  color: #555;
+}
+
+input:focus {
+  box-shadow: 0 0 0 3px rgb(5, 129, 7);
+  border-color: #3b8eea;
+}
+
+.submit-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+button[type="submit"] {
+  background: var(--button-bg);
+  border: 2px solid #c067c0;
+  padding: 14px 48px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 140px;
+  letter-spacing: 0.5px;
+  transition: transform .15s, filter .15s;
+}
+
+button:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+.error-message {
+  color: red;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+/* Responsive */
+@media (max-width: 500px) {
+  .login-card {
+    padding: 6.25rem 1.25rem 1.75rem;
+  }
+  button[type="submit"] {
+    width: 100%;
+    padding: 10px 20px;
+  }
+}
+
+@import "tailwindcss";
+
