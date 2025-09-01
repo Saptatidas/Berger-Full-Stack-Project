@@ -101,7 +101,7 @@ import { useNavigate } from 'react-router-dom';
     //   </div>
     // </form>
 
-    <div className="flex min-h-screen items-center justify-center bg-[#dbdbdb1f]">
+    <div className="flex min-h-screen items-center justify-center bg-[#e5e5e5]">
     <form
       className="w-90 rounded-lg bg-white border-[1.5px] border-[#7b7878a0] p-6 shadow-lg/20"
       onSubmit={handleSubmit}

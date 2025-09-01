@@ -7,6 +7,11 @@ const skuSchema = new mongoose.Schema({
         type:String,
         required: true,
     },
+    org:
+    {
+        type:String,
+        required: true,
+    },
     subinventory:
     {
         type:[String],
@@ -21,4 +26,5 @@ const skuSchema = new mongoose.Schema({
 
 const Sku = mongoose.model('Sku',skuSchema);
 
-export default Sku;
+
+export  default Sku;

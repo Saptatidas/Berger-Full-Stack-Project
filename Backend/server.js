@@ -151,17 +151,18 @@ app.post("/sku", async(req,res) => {
 
     try {
 
-        const {sku, subinventory, stock} = req.body;
+        const {sku, org, subinventory, stock} = req.body;
         console.log("Body received:", req.body);
         if (!sku || !subinventory || stock === undefined) {
             return res.status(400).json({ error: "SKU ProductName Stock required" });
         }
 
         const result = await Sku.create({
-            sku, subinventory, stock
+            sku, org, subinventory, stock
         });
         res.status(201).json({
             sku: result.sku,
+            org: result.org,
             subinventory: result.subinventory,
             stock: result.stock,
         });
@@ -179,7 +180,7 @@ app.post("/sku", async(req,res) => {
 // READ ALL (only return sku, subinventory, stock)
 app.get("/sku", async (req, res) => {
   try {
-    const products = await Sku.find({}, "sku subinventory stock"); 
+    const products = await Sku.find({}, "sku org subinventory stock"); 
     // second argument = projection (only include these fields)
 
     if (!products || products.length === 0) {
@@ -197,7 +198,7 @@ app.get("/sku", async (req, res) => {
 // READ multiple by SKU
 app.post("/sku/id", async (req, res) => {
   try {
-    const products = await Sku.find({ sku: req.body.sku });
+    const products = await Sku.find({ sku: req.body.sku, org: req.body.org });
 
     if (!products || products.length === 0) {
       return res.status(404).json({
@@ -212,6 +213,7 @@ app.post("/sku/id", async (req, res) => {
         for (let i = 0; i < p.subinventory.length; i++) {
           response.push({
             sku: p.sku,
+            org: p.org,
             subinventory: p.subinventory[i],
             stock: p.stock[i],
           });
@@ -230,7 +232,7 @@ app.post("/sku/id", async (req, res) => {
 app.post("/sku/update", async (req, res) => {
     try {
         
-        const { sku, subinventory, stock} = req.body;
+        const { sku, org, subinventory, stock} = req.body;
         
         if(!sku){
             return res.status(400).json({ error: "SKU required" });
@@ -277,15 +279,15 @@ app.post("/sku/update", async (req, res) => {
 //DELETE
 app.post("/sku/delete", async( req, res) => {
     try {
-        const {sku} =req.body;
+        const {sku, org} =req.body;
 
-        if(!sku) {
+        if(!sku && !org) {
             return res.status(400).json({
-                error: "Sku required"
+                error: "Sku and Org required"
             });
         }
         //find the product by SKU
-        const product = await Sku.findOne({ sku });
+        const product = await Sku.findOne({ sku, org });
         if(!product) {
             return res.status(404).json({   message: "Product not found"});
         }
